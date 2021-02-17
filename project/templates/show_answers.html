@@ -1,0 +1,25 @@
+<!-- templates/profile.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<table class="table" align="center" width="100%">
+        <thead>
+        <tr>
+            <th><abbr title="Number">Num</abbr></th>
+            <th>Question</th>
+            <th>Answer</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ans in answers %}
+            <tr>
+                <th>{{ ans.questionid }}</th>
+                <td>{{ ans.question_text }}</td>
+                <td>{{ ans.answer }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

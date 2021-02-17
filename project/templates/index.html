@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Exams Dashboard</h1>
+<h2 class="subtitle" />
+    <table class="table" align="center" width="100%">
+        <thead>
+        <tr>
+            <th><abbr title="Number">Num</abbr></th>
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Created By</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ex in rows %}
+            <tr>
+                <th>{{ ex.id }}</th>
+                <td>{{ ex.name }}</td>
+                <td>{{ ex.start_date }}</td>
+                <td>{{ ex.end_date }}</td>
+                <td>{{ ex.uname }}</td>
+                <td>
+                    <form method="GET" action="{{ url_for('main.show_exam', exid=ex.id) }}">
+                        {% if ex.end_date < today_date %}
+                            <button class="button is-danger is-small is-fullwidth is-outlined" title="Disabled button" disabled>Expired</button>
+                        {% elif ex.start_date > today_date %}
+                            <button class="button is-info is-small is-fullwidth is-outlined" title="Disabled button" disabled>Not Started</button>
+                        {% else  %}
+                            {% if is_user_solved[loop.index0] %}
+                                <button class="button is-primary is-small is-fullwidth" title="Disabled button" disabled>Solved</button>
+                            {% else  %}
+                                <button class="button is-block is-small is-fullwidth button is-primary is-outlined">Start</button>
+                            {% endif %}
+                        {% endif %}
+
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

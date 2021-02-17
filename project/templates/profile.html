@@ -1,0 +1,39 @@
+<!-- templates/profile.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  Welcome, {{ res.name }}!
+</h1>
+    <h1 class="title">
+  Sumbitted Exams
+</h1>
+
+<table class="table" align="center" width="100%">
+        <thead>
+        <tr>
+            <th><abbr title="Number">Num</abbr></th>
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ex in res.exams %}
+            <tr>
+                <th>{{ ex.examid }}</th>
+                <td>{{ ex.name }}</td>
+                <td>{{ ex.start_date }}</td>
+                <td>{{ ex.end_date }}</td>
+                <td>
+                    <form method="GET" action="{{ url_for('main.show_answers', exid=ex.examid) }}">
+                        <button class="button is-block is-small is-fullwidth button is-primary is-outlined">Show Answers</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

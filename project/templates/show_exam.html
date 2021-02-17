@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">{{ exam.name }}</h1>
+<h2 class="subtitle" />
+        <tbody>
+        <form action="{{ url_for('main.submit_answers', exid=exam.id) }}" method="POST">
+        {% for q in questions %}
+        <div class="box" id = "question{{ q.id }}">
+            <div class="field">
+                <label class="label">{{ q.question_text }}</label>
+                <div class="control">
+                    <label class="radio">
+                    <input type="radio" name="ans{{ q.id }}" id="a" value="a">
+                        {{ q.a }}
+                    </label> <br/>
+                    <label class="radio">
+                    <input type="radio" name="ans{{ q.id }}" id="b" value="b">
+                        {{ q.b }}
+                    </label> <br/>
+                    <label class="radio">
+                    <input type="radio" name="ans{{ q.id }}" id="c" value="c">
+                        {{ q.c }}
+                    </label> <br/>
+
+                    <label class="radio">
+                    <input type="radio" name="ans{{ q.id }}" id="d" value="d">
+                        {{ q.d }}
+                    </label> <br/>
+
+                    <label class="radio">
+                    <input type="radio" name="ans{{ q.id }}" id="e" value="e">
+                        {{ q.e }}
+                    </label>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <button class="button is-block is-info is-large">Send Answers</button>
+        </form>
+        </tbody>
+{% endblock %}

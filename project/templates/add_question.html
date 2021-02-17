@@ -1,0 +1,72 @@
+<!-- templates/login.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="column is-4 is-offset-4">
+    <h3 class="title">{{res.ex_name}}</h3>
+    <h3 class="title">Add Question</h3>
+    <div class="box">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification is-success">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+        {% endwith %}
+        <form method="POST" action="{{ url_for('main.add_question', exid=res.exam_id) }}">
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" name="quetext" placeholder="Question Text" autofocus="">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <label for="A">A)</label>
+                    <input class="input is-large" name="A">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <label for="B">B)</label>
+                    <input class="input is-large" name="B">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <label for="C">C)</label>
+                    <input class="input is-large" name="C">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <label for="D">D)</label>
+                    <input class="input is-large" name="D">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <label for="E">E)</label>
+                    <input class="input is-large" name="E">
+                </div>
+            </div>
+            </br>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" name="trueans" placeholder="True Answer">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" name="point" placeholder="Point">
+                </div>
+            </div>
+            <button class="button is-block is-info is-large is-fullwidth">Add Question</button>
+        </form>
+        <form method="GET" action="{{ url_for('main.index') }}">
+            <br/>
+            <button class="button is-block is-warning is-large is-fullwidth">Sumbit Exam</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
