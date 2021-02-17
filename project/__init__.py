@@ -11,7 +11,8 @@ def create_app():
     app = Flask(__name__)
 
     app.config['SECRET_KEY'] = '8OLWxQD4o83j4K4iuopO'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://nampgokf:flM1cRNPmRny3Sdo_XQmXtx2rHa6u-1e@kandula.db.elephantsql.com:5432/nampgokf'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://aysunm:{Aysun123.}@aysunmpostgres.postgres.database.azure.com/postgres?sslmode=require'
+
 
     db.init_app(app)
     migrate.init_app(app, db)
