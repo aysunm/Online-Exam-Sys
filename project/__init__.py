@@ -11,7 +11,7 @@ def create_app():
     app = Flask(__name__)
 
     app.config['SECRET_KEY'] = '8OLWxQD4o83j4K4iuopO'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://aysunm:{Aysun123.}@aysunmpostgres.postgres.database.azure.com/postgres?sslmode=require'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://aysunm:Aysun123.@aysunmpostgres.postgres.database.azure.com/postgres?sslmode=require'
 
 
     db.init_app(app)
